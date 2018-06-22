@@ -34,11 +34,14 @@ def prepare_dependencies_dir(logger, project, target_directory, excludes=None):
     excludes = excludes or []
     dependencies = ast.literal_eval(build_install_dependencies_string(project))
 
-    index_url = project.get_property('install_dependencies_index_url')
-    if index_url:
-        index_url = "--index-url {0}".format(index_url)
+    index_url_prop = project.get_property('install_dependencies_index_url')
+    extra_index_url_prop = project.get_property('install_dependencies_extra_index_url')
+    if index_url_prop:
+        index_url = "--index-url {0}".format(index_url_prop)
     else:
         index_url = ""
+    if extra_index_url_prop:
+        index_url = "{0} --extra-index-url {1}".format(index_url, extra_index_url_prop) 
 
     pip_cmd = 'pip install --target {0} {1} {2}'
     for dependency in dependencies:
