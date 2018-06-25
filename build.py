@@ -12,7 +12,7 @@ use_plugin('python.coverage')
 use_plugin('python.distutils')
 
 
-name = 'pybuilder_aws_plugin'
+name = 'bba-pybuilder-aws-plugin'
 default_task = 'publish'
 version = VCSRevision().get_git_revision_count()
 summary = 'PyBuilder plugin to handle AWS functionality'
