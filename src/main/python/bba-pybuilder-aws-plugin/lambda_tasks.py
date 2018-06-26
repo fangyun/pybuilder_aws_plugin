@@ -62,7 +62,7 @@ def prepare_dependencies_dir(logger, project, target_directory, excludes=None):
 
 def get_path_to_zipfile(project):
     return os.path.join(
-            project.expand_path('$dir_target'), '{0}.zip'.format(project.name))
+            project.expand_path('$dir_target'), '{0}-{1}.zip'.format(project.name, project.version))
 
 
 def write_version(project, archive):
